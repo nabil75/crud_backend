@@ -1,0 +1,33 @@
+﻿import csv
+
+# Liste de réponses potentielles
+responses = [
+    "L'esprit de compétition est essentiel pour se dépasser.",
+    "Cela motive les athlètes à donner le meilleur d'eux-mêmes.",
+    "Parfois, la compétition peut devenir malsaine.",
+    "C'est un excellent moyen d'apprendre à gérer la pression.",
+    "L'esprit de compétition favorise le travail d'équipe.",
+    "Cela peut aussi causer des conflits inutiles.",
+    "C'est une source de motivation pour beaucoup.",
+    "Certaines personnes ne supportent pas la pression de la compétition.",
+    "C'est important de trouver un équilibre entre compétition et plaisir.",
+    "La compétition peut être une école de vie."
+]
+
+# Étendre les réponses pour en générer 100 (avec variations simples)
+while len(responses) < 100:
+    base = responses[len(responses) % 10]  # Réutilise les 10 premières réponses
+    variation = f"{base} (avis personnel)"
+    responses.append(variation)
+
+# Créer un fichier CSV
+csv_file_path = "./responses_competition_sport.csv"
+
+# Écrire les réponses dans le fichier CSV
+with open(csv_file_path, mode="w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Réponses"])  # Ajouter un en-tête
+    for response in responses:
+        writer.writerow([response])
+
+print(f"Fichier CSV généré : {csv_file_path}")
